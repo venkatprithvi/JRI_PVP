@@ -106,4 +106,53 @@ public class TestScenario_001 extends Wrapper {
 		clickByLocator(loc.New_account_creation_submit_buttion);
 		Assert.assertEquals("Enter your password",getTextByAnyLocator(loc.failure_password_field));
 	}
+	
+	/*****************************************************************************************
+	 * TC 007 : click new account creation - fill name,mobile no, email, password - id field 
+	 * with value - and submit - shows warning message "Please agree to the terms & conditions" 
+	 *****************************************************************************************/
+	@Test
+	public void Tc_007() throws Exception {
+		Tc_002();
+		sendKeysByAnyLocator(loc.New_account_creation_name_fill, "Prithvi");
+		sendKeysByAnyLocator(loc.New_account_creation_mobile_no_fill, "8885522518");
+		sendKeysByAnyLocator(loc.New_account_creation_email_fill,"jsdnjnsnvjnn@gmail.com");
+		sendKeysByAnyLocator(loc.New_account_creation_password_fill, "123456");
+		clickByLocator(loc.New_account_creation_submit_buttion);
+		Assert.assertEquals("Please agree to the terms & conditions",getTextByAnyLocator(loc.failure_t_n_c_field));
+	}
+	
+	/*****************************************************************************************
+	 * TC 008 : click new account creation - fill name,mobile no, email, password - id field 
+	 * with value - and then click on refresh icon  
+	 *****************************************************************************************/
+	@Test
+	public void Tc_008() throws Exception {
+		Tc_002();
+		sendKeysByAnyLocator(loc.New_account_creation_name_fill, "Prithvi");
+		sendKeysByAnyLocator(loc.New_account_creation_mobile_no_fill, "8885522518");
+		sendKeysByAnyLocator(loc.New_account_creation_email_fill,"jsdnjnsnvjnn@gmail.com");
+		sendKeysByAnyLocator(loc.New_account_creation_password_fill, "123456");
+		driver.navigate().refresh();
+		Assert.assertEquals("", getTextByAnyLocator(loc.failure_name_field) );
+		Assert.assertEquals("", getTextByAnyLocator(loc.failure_mobile_field));
+		Assert.assertEquals("", getTextByAnyLocator(loc.failure_email_field));
+		Assert.assertEquals("",getTextByAnyLocator(loc.failure_password_field));
+	}
+	
+	/*****************************************************************************************
+	 * TC 010 : click new account creation - fill name,mobile no, email, password - id field 
+	 * with value - and then click on submit-redirect to myaccount_directory page  
+	 *****************************************************************************************/
+	@Test
+	public void Tc_010() throws Exception {
+		Tc_002();
+		sendKeysByAnyLocator(loc.New_account_creation_name_fill, "Prithvi");
+		sendKeysByAnyLocator(loc.New_account_creation_mobile_no_fill, "9885122518");
+		sendKeysByAnyLocator(loc.New_account_creation_email_fill,"jsdn1jnsnvjnn@gmail.com");
+		sendKeysByAnyLocator(loc.New_account_creation_password_fill, "123456");
+		clickByLocator(loc.New_account_creation_t_n_c_checkbox);
+		clickByLocator(loc.New_account_creation_submit_buttion);
+		Assert.assertEquals("https://www.justrechargeit.com/myaccount_directory.aspx", driver.getCurrentUrl());
+	}
 }
