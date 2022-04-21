@@ -21,6 +21,7 @@ public class TestScenario_001 extends Wrapper {
 	 *********************************************************************/
 	@BeforeMethod
 	public void BeforeTestcaseRun() throws IOException {
+		Locators loc = new Locators();
 		loaddata_From_Prop_File("Z:\\SeleniumEclipseWorkspace\\JRI_PROJECT\\testData\\input.properties");
 		multiBrowserLaunch("Chrome");
 	}
