@@ -10,11 +10,15 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Properties;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.io.FileHandler;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Wrapper {
@@ -167,16 +171,32 @@ public class Wrapper {
 	}
 
 	/****************************************************************
-	 * TimeStamp
+	 * Current - TimeStamp
 	 * 
 	 * @return
 	 **************************************************************/
-	public String timestamp() {
-		Date d = new Date(0);
-		DateFormat df = new SimpleDateFormat("ddMMMyyy_HHmmss");
-		String timeTamp = df.format(d);
-		return timeTamp;
+	public String currentTimeStamp() {
+		Date abc = new Date(0);
+		DateFormat df = new SimpleDateFormat("yyyyMMMdd_HH_mm_ss");
+		String timeStamp = df.format(abc);
+		return timeStamp;
 	}
+	
+	/***********************************************************************
+	 * take - screenshot
+	 * 
+	 * @throws Exception
+	 ****************************************************************************/
+
+	public void takescreenshotWithTimeStamp(String nameOfTheFile) throws Exception {
+		// take a screeshot: stored into RAM location
+		File myscreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		// move the screenshot to specific folder above path
+		FileHandler.copy(myscreenshot,
+				new File("Z:\\SeleniumEclipseWorkspace\\JRI_PROJECT\\ScreenShots" + nameOfTheFile
+						+ currentTimeStamp() + ".PNG"));
+	}
+
 
 	/****************************************************************
 	 * Validation expected_value vs real_value

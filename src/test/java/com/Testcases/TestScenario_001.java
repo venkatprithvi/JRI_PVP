@@ -21,7 +21,7 @@ public class TestScenario_001 extends Wrapper {
 	 *********************************************************************/
 	@BeforeMethod
 	public void BeforeTestcaseRun() throws IOException {
-		Locators loc = new Locators();
+		
 		loaddata_From_Prop_File("Z:\\SeleniumEclipseWorkspace\\JRI_PROJECT\\testData\\input.properties");
 		multiBrowserLaunch("Chrome");
 	}
@@ -54,7 +54,7 @@ public class TestScenario_001 extends Wrapper {
 	@Test
 	public void Tc_002() throws Exception {
 		Tc_001();
-		clickByLocator(loc.create_new_account);
+		clickByLocator(loc.create_new_account_a_href_link);
 		Thread.sleep(3000);
 	}
 
