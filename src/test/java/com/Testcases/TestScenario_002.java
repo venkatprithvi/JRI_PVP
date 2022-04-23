@@ -17,7 +17,7 @@ public class TestScenario_002 extends Wrapper {
 	 * Before function to run driver creation and loading properties file
 	 * 
 	 * @throws IOException
-	 * @throws InterruptedException 
+	 * @throws InterruptedException
 	 *********************************************************************/
 	@BeforeMethod
 	public void BeforeTestcaseRun() throws IOException, InterruptedException {
@@ -28,7 +28,8 @@ public class TestScenario_002 extends Wrapper {
 
 	/*********************************************************************
 	 * After function to run driver creation and loading properties file
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 *********************************************************************/
 	@AfterMethod
 	public void AfterTestcaseRun() throws Exception {
@@ -45,7 +46,7 @@ public class TestScenario_002 extends Wrapper {
 		Thread.sleep(3000);
 		Assert.assertEquals("https://www.justrechargeit.com/", driver.getCurrentUrl());
 	}
-	
+
 	/************************************************************
 	 * TC 012 : sign-in page sign-in link test
 	 **************************************************************/
@@ -56,7 +57,7 @@ public class TestScenario_002 extends Wrapper {
 		clickByLocator(loc.sign_in_inside_sign_in);
 		Assert.assertEquals("https://www.justrechargeit.com/SignIn.aspx", driver.getCurrentUrl());
 	}
-	
+
 	/************************************************************
 	 * TC 013 : sign-in page sign-in link test
 	 **************************************************************/
@@ -65,36 +66,22 @@ public class TestScenario_002 extends Wrapper {
 		Tc_011();
 		clickByLocator(loc.sign_in_a_href_link);
 		clickByLocator(loc.sign_in_inside_sign_in);
-		if(
-		driver.findElement(loc.Sign_in_email_field).isDisplayed()
-		&&
-		driver.findElement(loc.Sign_in_password_field).isDisplayed()
-		&&
-		driver.findElement(loc.Sign_in_capture_field).isDisplayed()
-		&&
-		driver.findElement(loc.Sign_in_secure_sign_in_buttion).isDisplayed()
-		&&
-		driver.findElement(loc.Sign_in_sign_in_with_facebook).isDisplayed()
-		&&
-		driver.findElement(loc.Sign_in_sign_in_with_google).isDisplayed()
-		) 
-		{
+		if (driver.findElement(loc.Sign_in_email_field).isDisplayed()
+				&& driver.findElement(loc.Sign_in_password_field).isDisplayed()
+				&& driver.findElement(loc.Sign_in_capture_field).isDisplayed()
+				&& driver.findElement(loc.Sign_in_secure_sign_in_buttion).isDisplayed()
+				&& driver.findElement(loc.Sign_in_sign_in_with_facebook).isDisplayed()
+				&& driver.findElement(loc.Sign_in_sign_in_with_google).isDisplayed()) {
 			System.out.println("all web elements founded ");
-		}
-		else 
-		{
+		} else {
 			System.out.println("all elements not found");
 		}
-		
+
 		clickByLocator(loc.Sign_in_forgot_password);
-		if(
-			driver.findElement(loc.Sign_in_forgot_password_emailid).isDisplayed()
-			&&
-			driver.findElement(loc.Sign_in_forgot_password_get_password).isDisplayed()
-			) 
-		{
+		if (driver.findElement(loc.Sign_in_forgot_password_emailid).isDisplayed()
+				&& driver.findElement(loc.Sign_in_forgot_password_get_password).isDisplayed()) {
 			System.out.println("web elements displayed");
-		}else {
+		} else {
 			System.out.println("web elements not found");
 		}
 	}
@@ -107,31 +94,97 @@ public class TestScenario_002 extends Wrapper {
 		Tc_012();
 		clickByLocator(loc.Sign_in_secure_sign_in_buttion);
 		Assert.assertEquals("Enter your email", getTextByAnyLocator(loc.sign_in_email_validation));
-		sendKeysByAnyLocator(loc.Sign_in_email_field, "venkatprithvi.p@gmail.com");
+		sendKeysByAnyLocator(loc.Sign_in_email_field, "pvpseleniumlearnings@gmail.com");
 		clickByLocator(loc.Sign_in_secure_sign_in_buttion);
 		Assert.assertEquals("Enter your password", getTextByAnyLocator(loc.sign_in_password_validation));
-		sendKeysByAnyLocator(loc.Sign_in_email_field, "venkatprithvi.p@gmail.com");
-		sendKeysByAnyLocator(loc.Sign_in_password_field, "ap31dd6406");
+		sendKeysByAnyLocator(loc.Sign_in_email_field, "pvpseleniumlearnings@gmail.com");
+		sendKeysByAnyLocator(loc.Sign_in_password_field, "123456");
 		clickByLocator(loc.Sign_in_secure_sign_in_buttion);
 		Assert.assertEquals("Enter captcha properly", getTextByAnyLocator(loc.sign_in_capture_validation));
 	}
-	
+
 	/************************************************************
 	 * TC 015 : sign-in page sign-in link test
 	 **************************************************************/
 	@Test
 	public void Tc_015() throws Exception {
 		Tc_012();
-		sendKeysByAnyLocator(loc.Sign_in_email_field, "venkatprithvi.p@gmail.com");
-		sendKeysByAnyLocator(loc.Sign_in_password_field, "ap31dd6406");
+		sendKeysByAnyLocator(loc.Sign_in_email_field, "pvpseleniumlearnings@gmail.com");
+		sendKeysByAnyLocator(loc.Sign_in_password_field, "123456");
 		clickByLocator(loc.Sign_in_secure_sign_in_buttion);
 		Assert.assertEquals("Enter captcha properly", getTextByAnyLocator(loc.sign_in_capture_validation));
 	}
-	
-	public void Tc_17() throws Exception {
+
+	/************************************************************
+	 * TC 017 : forgot password - popup alert - email - accept
+	 **************************************************************/
+	@Test
+	public void Tc_017() throws Exception {
 		Tc_012();
 		clickByLocator(loc.Sign_in_forgot_password);
-		
+		Thread.sleep(3000);
+		if (driver.findElement(loc.sign_in_forgotpassword_email_field).isDisplayed()) {
+			System.out.println("page has displayed");
+		}
+		;
 	}
-	
+
+	/************************************************************
+	 * TC 018 : forgot password - popup alert - email - accept
+	 **************************************************************/
+	@Test
+	public void Tc_018() throws Exception {
+		Tc_012();
+		clickByLocator(loc.Sign_in_forgot_password);
+		Thread.sleep(3000);
+		if (driver.findElement(loc.sign_in_forgotpassword_email_field).isDisplayed()
+				&& driver.findElement(loc.Sign_in_forgot_password_get_password).isDisplayed()) {
+			System.out.println("email and get password elements founded");
+		} else {
+			System.out.println("email and get password elements not founded");
+		}
+	}
+
+	/************************************************************
+	 * TC 019 : forgot password - popup alert - email - accept
+	 **************************************************************/
+	@Test
+	public void Tc_019() throws Exception {
+		Tc_012();
+		clickByLocator(loc.Sign_in_forgot_password);
+		Thread.sleep(3000);
+
+		clickByLocator(loc.Sign_in_forgot_password_get_password);
+		Assert.assertEquals("Enter your email",
+				getTextByAnyLocator(loc.sign_in_forgetpassword_email_validation_warning));
+
+		sendKeysByAnyLocator(loc.sign_in_forgotpassword_email_field, "venkat");
+		System.out.println(getTextByAnyLocator(loc.sign_in_forgetpassword_email_validation_warning));
+		clickByLocator(loc.Sign_in_forgot_password_get_password);
+		Assert.assertEquals("Enter valid login email",
+				getTextByAnyLocator(loc.sign_in_forgetpassword_email_validation_warning));
+	}
+
+	/************************************************************
+	 * TC 020 : forget password success - checking email
+	 **************************************************************/
+	@Test
+	public void Tc_20() throws Exception {
+		Tc_012();
+		clickByLocator(loc.Sign_in_forgot_password);
+		Thread.sleep(3000);
+		sendKeysByAnyLocator(loc.sign_in_forgotpassword_email_field, "pvpseleniumlearnings@gmail.com");
+		clickByLocator(loc.Sign_in_forgot_password_get_password);
+		clickByLocator(loc.sign_in_forgetpassword_password_sent_close);
+		// gmail signup page
+		UrlPageOpening(getdata_from_prop("GmailSigninPage"));
+
+		sendKeysByAnyLocator(loc.gmail_id_Tfield, "pvpseleniumlearnings@gmail.com");
+		clickByLocator(loc.gmail_emailid_next);
+		sendKeysByAnyLocator(loc.gmail_password_Tfield, "aA@12345");
+		clickByLocator(loc.gmail_password_next);
+		clickByLocator(loc.google_all_icon);
+		Thread.sleep(3000);
+		System.out.println("partially developed");
+	}
 }

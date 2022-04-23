@@ -7,7 +7,7 @@
         <methods>
           <include name="BeforeTestcaseRun"/>
           <include name="AfterTestcaseRun"/>
-          <include name="Tc_015"/>
+          <include name="Tc_20"/>
         </methods>
       </class> <!-- com.Testcases.TestScenario_002 -->
     </classes>

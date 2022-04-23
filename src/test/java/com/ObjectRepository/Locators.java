@@ -44,6 +44,17 @@ public final By Sign_in_secure_sign_in_buttion = By.xpath("//input[@id='imgbtnSi
 public final By sign_in_email_validation = By.xpath("//span[@id='MessageCaption2']");
 public final By sign_in_password_validation = By.xpath("//span[@id='MessageCaption3']");
 public final By sign_in_capture_validation = By.xpath("//span[@id='MessageCaption4']");
+/*---------------------*/
+public final By sign_in_forgotpassword_email_field = By.xpath("//input[@id='forgotpass_txtEmailId']");
+public final By sign_in_forgotpassword_getpassword_button = By.xpath("//input[@id='forgotpass_imgbtnSubmit']");
+public final By sign_in_forgetpassword_email_validation_warning = By.xpath("//span[@id='forgotpass_lblError']");
+public final By sign_in_forgetpassword_password_sent_success_message = By.xpath("//tbody/tr[4]/td[1]/div[1]/span[1]/span[1]");
+public final By sign_in_forgetpassword_password_sent_close = By.xpath("//body/form[@id='signin']/div[@id='forgotpasswordform']/div[@id='heading']/span[1]/a[1]/img[1]");
 
-
+/*********GMAIL LOGIN***********/
+public final By gmail_id_Tfield = By.xpath("//input[@id='identifierId']");
+public final By gmail_emailid_next = By.xpath("//span[contains(text(),'Next')]");
+public final By gmail_password_Tfield = By.xpath("//body/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/span[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]");
+public final By gmail_password_next = By.xpath("//span[contains(text(),'Next')]");
+public final By google_all_icon = By.xpath("//header/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/a[1]/*[1]");
 }

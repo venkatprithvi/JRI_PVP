@@ -236,4 +236,6 @@ public class Wrapper {
 			System.out.println("Webelement is not displayed on Screen,plz check");
 		}
 	}
+	
+
 }
