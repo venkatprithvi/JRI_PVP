@@ -9,6 +9,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -176,10 +181,10 @@ public class Wrapper {
 	 * @return
 	 **************************************************************/
 	public String currentTimeStamp() {
-		Date abc = new Date(0);
-		DateFormat df = new SimpleDateFormat("yyyyMMMdd_HH_mm_ss");
-		String timeStamp = df.format(abc);
-		return timeStamp;
+		LocalDateTime myDateObj = LocalDateTime.now();
+	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyymmdd_HH_mm_ss");
+	    String formattedDate = myDateObj.format(myFormatObj);
+		return formattedDate;
 	}
 	
 	/***********************************************************************
@@ -189,12 +194,9 @@ public class Wrapper {
 	 ****************************************************************************/
 
 	public void takescreenshotWithTimeStamp(String nameOfTheFile) throws Exception {
-		// take a screeshot: stored into RAM location
-		File myscreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		// move the screenshot to specific folder above path
-		FileHandler.copy(myscreenshot,
-				new File("Z:\\SeleniumEclipseWorkspace\\JRI_PROJECT\\ScreenShots" + nameOfTheFile
-						+ currentTimeStamp() + ".PNG"));
+	//	FileInputStream fis = new FileInputStream("Z:\\SeleniumEclipseWorkspace\\JRI_PROJECT\\ScreenShots");
+		File myscreenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(myscreenshot, new File("Z:\\\\SeleniumEclipseWorkspace\\\\JRI_PROJECT\\\\ScreenShots\\" + nameOfTheFile + currentTimeStamp() + ".png"));
 	}
 
 
@@ -237,5 +239,16 @@ public class Wrapper {
 		}
 	}
 	
-
+	/**************************************************************************
+	 * Scanner to ready input from console
+	 * **************************************************************************/
+    @SuppressWarnings("resource")
+	public String scannerInputText()
+       {
+    	Scanner sc = new Scanner(System.in);
+        System.out.println("Enter :");
+        String op = sc.nextLine();
+		return op;
+       }
+	
 }

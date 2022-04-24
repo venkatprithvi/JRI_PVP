@@ -43,8 +43,30 @@ public class TestScenario_003 extends Wrapper {
 	 * @throws IOException
 	 ********************************************************************/
 	@Test
-	public void Tc_001() throws IOException {
+	public void Tc_021() throws IOException {
 		UrlPageOpening(getdata_from_prop("HomePageURL"));
 		Assert.assertEquals("https://www.justrechargeit.com/", driver.getCurrentUrl());
 	}
+	
+	/*********************************************************************
+	 * Tc_001 opening JRI home page
+	 * 
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 ********************************************************************/
+	@Test
+	public void Tc_022() throws Exception {
+		Tc_021();
+		clickByLocator(loc.sign_in_a_href_link);
+		sendKeysByAnyLocator(loc.Sign_in_email_field,getdata_from_prop("JRIemail"));
+		sendKeysByAnyLocator(loc.Sign_in_password_field, getdata_from_prop("JRIpassword"));
+		sendKeysByAnyLocator(loc.Sign_in_capture_field, scannerInputText());
+		Thread.sleep(5000);
+		clickByLocator(loc.Sign_in_secure_sign_in_buttion);
+		takescreenshotWithTimeStamp("abcd");
+	}
+	
 }
+
+
+

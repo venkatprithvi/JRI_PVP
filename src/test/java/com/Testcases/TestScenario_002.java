@@ -179,9 +179,9 @@ public class TestScenario_002 extends Wrapper {
 		// gmail signup page
 		UrlPageOpening(getdata_from_prop("GmailSigninPage"));
 
-		sendKeysByAnyLocator(loc.gmail_id_Tfield, "pvpseleniumlearnings@gmail.com");
+		sendKeysByAnyLocator(loc.gmail_id_Tfield, getdata_from_prop("gmailusername"));
 		clickByLocator(loc.gmail_emailid_next);
-		sendKeysByAnyLocator(loc.gmail_password_Tfield, "aA@12345");
+		sendKeysByAnyLocator(loc.gmail_password_Tfield,getdata_from_prop("gmailpassword"));
 		clickByLocator(loc.gmail_password_next);
 		clickByLocator(loc.google_all_icon);
 		Thread.sleep(3000);
