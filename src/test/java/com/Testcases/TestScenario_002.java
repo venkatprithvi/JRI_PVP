@@ -34,6 +34,7 @@ public class TestScenario_002 extends Wrapper {
 	@AfterMethod
 	public void AfterTestcaseRun() throws Exception {
 		implicitWait(10);
+		takescreenshotWithTimeStamp("JRI_");
 		browserClosing();
 	}
 
@@ -109,10 +110,28 @@ public class TestScenario_002 extends Wrapper {
 	@Test
 	public void Tc_015() throws Exception {
 		Tc_012();
-		sendKeysByAnyLocator(loc.Sign_in_email_field, "pvpseleniumlearnings@gmail.com");
-		sendKeysByAnyLocator(loc.Sign_in_password_field, "123456");
+		clickByLocator(loc.sign_in_a_href_link);
+		sendKeysByAnyLocator(loc.Sign_in_email_field,getdata_from_prop("JRIemail"));
+		sendKeysByAnyLocator(loc.Sign_in_password_field, getdata_from_prop("JRIpassword"));
+		sendKeysByAnyLocator(loc.Sign_in_capture_field, scannerInputText());
+		Thread.sleep(5000);
 		clickByLocator(loc.Sign_in_secure_sign_in_buttion);
-		Assert.assertEquals("Enter captcha properly", getTextByAnyLocator(loc.sign_in_capture_validation));
+	}
+	
+	/************************************************************
+	 * TC 016 : sign up and followed by sign out
+	 **************************************************************/
+	@Test
+	public void Tc_016() throws Exception {
+		Tc_012();
+		clickByLocator(loc.sign_in_a_href_link);
+		sendKeysByAnyLocator(loc.Sign_in_email_field,getdata_from_prop("JRIemail"));
+		sendKeysByAnyLocator(loc.Sign_in_password_field, getdata_from_prop("JRIpassword"));
+		sendKeysByAnyLocator(loc.Sign_in_capture_field, scannerInputText());
+		Thread.sleep(5000);
+		clickByLocator(loc.Sign_in_secure_sign_in_buttion);
+		Thread.sleep(5000);
+		clickByLocator(loc.sign_in_sign_out);
 	}
 
 	/************************************************************

@@ -34,6 +34,7 @@ public class TestScenario_003 extends Wrapper {
 	@AfterMethod
 	public void AfterTestcaseRun() throws Exception {
 		implicitWait(10);
+		takescreenshotWithTimeStamp("JRI_");
 		browserClosing();
 	}
 
@@ -63,7 +64,9 @@ public class TestScenario_003 extends Wrapper {
 		sendKeysByAnyLocator(loc.Sign_in_capture_field, scannerInputText());
 		Thread.sleep(5000);
 		clickByLocator(loc.Sign_in_secure_sign_in_buttion);
-		takescreenshotWithTimeStamp("abcd");
+		
+		clearfieldByAnyLocator(loc.directory_mob_serv_num);
+		clickByLocator(loc.directory_services_add_button);	
 	}
 	
 }

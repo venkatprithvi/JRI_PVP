@@ -50,6 +50,8 @@ public final By sign_in_forgotpassword_getpassword_button = By.xpath("//input[@i
 public final By sign_in_forgetpassword_email_validation_warning = By.xpath("//span[@id='forgotpass_lblError']");
 public final By sign_in_forgetpassword_password_sent_success_message = By.xpath("//tbody/tr[4]/td[1]/div[1]/span[1]/span[1]");
 public final By sign_in_forgetpassword_password_sent_close = By.xpath("//body/form[@id='signin']/div[@id='forgotpasswordform']/div[@id='heading']/span[1]/a[1]/img[1]");
+/*--------------------------*/
+public final By sign_in_sign_out = By.xpath("//a[@id='jriTop_signOut']");
 
 /*********GMAIL LOGIN***********/
 public final By gmail_id_Tfield = By.xpath("//input[@id='identifierId']");
@@ -57,4 +59,16 @@ public final By gmail_emailid_next = By.xpath("//span[contains(text(),'Next')]")
 public final By gmail_password_Tfield = By.xpath("//body/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/span[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]");
 public final By gmail_password_next = By.xpath("//span[contains(text(),'Next')]");
 public final By google_all_icon = By.xpath("//header/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/a[1]/*[1]");
+
+/***************After sign-up -->> directory page  *******************/
+public final By directory_mob_serv_num = By.xpath("//input[@id='txtMobileNo']");
+public final By directory_mob_serv_providers = By.xpath("//select[@id='ddlMobileServiceProvider']");
+public final By directory_mob_nickname = By.xpath("//input[@id='txtMobileNickName']");
+/*-----------------------------------------*/
+public final By directory_mob_serv_num_warning_message = By.xpath("//span[@id='errorMsgMobile']");
+
+public final By directory_services_add_button = By.xpath("//input[@id='btnAddServices']");
+
 }
+
+

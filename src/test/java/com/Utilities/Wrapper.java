@@ -4,13 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Properties;
 import java.util.Scanner;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -250,5 +246,18 @@ public class Wrapper {
         String op = sc.nextLine();
 		return op;
        }
+    
+		/*
+		 * *************************************************************
+		 * clear text field using locator
+		 ************************************************************/
+		public void clearfieldByAnyLocator(By locator) {
+			WebElement element = driver.findElement(locator);
+			if (element.isDisplayed()) {
+				element.clear();
+			} else {
+				System.out.println("Webelement is not displayed on Screen,plz check");
+			}
+		}
 	
 }
